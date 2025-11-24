@@ -29,14 +29,21 @@ Proyecto desarrollado en **PHP + MySQL**, siguiendo una estructura tipo **MVC**.
 
 ##  Estructura del proyecto
 ```
-gestion-gastos/
-├── src/
-│ ├── modelo/
-│ ├── servicios/
-│ └── Main.java
-├── sql/
+Julieta/
+├── app/
+│ ├── controllers/
+│ ├── middlewares/
+│ ├── models/
+│ ├── views/
+├── config/
+├── css/
+│── database/
+├── js/
+├── templates/
+│ ├── layouts/
+├── .htaccess/
 ├── README.md
-└── resources/
+└── router.php/
 ```
 
 ## Cómo usarlo
