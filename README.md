@@ -28,6 +28,7 @@ Proyecto desarrollado en **PHP + MySQL**, siguiendo una estructura tipo **MVC**.
 ---
 
 ##  Estructura del proyecto
+```
 gestion-gastos/
 ├── src/
 │ ├── modelo/
@@ -36,6 +37,7 @@ gestion-gastos/
 ├── sql/
 ├── README.md
 └── resources/
+```
 
 ## Cómo usarlo
 - Crear una base de datos en phpMyAdmin con el nombre **julieta-gestion**
