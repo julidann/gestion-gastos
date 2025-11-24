@@ -7,7 +7,7 @@ Proyecto desarrollado en **PHP + MySQL**, siguiendo una estructura tipo **MVC**.
 ---
 
 ## Tecnologías usadas
-- **PHP **
+- **PHP**
 - **MySQL**
 - **HTML5 / CSS3**
 - **JavaScript**
@@ -61,16 +61,6 @@ Julieta/
 > Nota: el proyecto sigue un patrón tipo MVC.  
 > No incluyo usuarios por defecto por razones de seguridad.
 
-## Capturas de pantalla
-A continuación algunas vistas del sistema:
-
-- Panel de movimientos
-- Formulario de carga
-- Gráfico de cotizaciones
-- Login
-
-//poner capturas
-
 
 ## Arquitectura
 El proyecto sigue un esquema MVC simple:
@@ -79,6 +69,33 @@ El proyecto sigue un esquema MVC simple:
 - **views/** → archivos .phtml con HTML + PHP embebido.
 - **controllers/** → reciben rutas, procesan entradas y envían datos a las vistas.
 - **router.php** → define las rutas del sistema.
+
+## Tabla de ruteo
+
+| **Ruta (action)**              | **Método** | **Middleware**                      | **Controller**       | **Acción (método del controller)** |
+| ------------------------------ | ---------- | ----------------------------------- | -------------------- | ---------------------------------- |
+| `login`                        | GET        | SessionMiddleware                   | AuthController       | showLogin                          |
+| `do_login`                     | POST       | SessionMiddleware                   | AuthController       | doLogin                            |
+| `logout`                       | GET        | GuardMiddleware + SessionMiddleware | AuthController       | logout                             |
+| `home`                         | GET        | GuardMiddleware + SessionMiddleware | HomeController       | showHome                           |
+| `tabla-gestion`                | GET        | GuardMiddleware                     | GestionController    | showGestion                        |
+| `agregar-gestion`              | GET        | GuardMiddleware                     | GestionController    | showAddFormGestion                 |
+| `agregar-gestion`              | POST       | GuardMiddleware                     | GestionController    | insertGestion                      |
+| `editar-gestion/{id}`          | GET        | GuardMiddleware                     | GestionController    | showEditFormGestion                |
+| `editar-gestion/{id}`          | POST       | GuardMiddleware                     | GestionController    | editGestion                        |
+| `eliminar-gestion/{id}`        | GET        | GuardMiddleware                     | GestionController    | deleteGestion                      |
+| `buscar-gestiones`             | GET        | GuardMiddleware                     | GestionController    | showFormFiltro                     |
+| `filtrar-gestion`              | GET        | GuardMiddleware                     | GestionController    | buscarGestiones                    |
+| `tabla-cotizaciones`           | GET        | GuardMiddleware                     | CotizacionController | showCotizaciones                   |
+| `agregar-cotizacion`           | GET        | GuardMiddleware                     | CotizacionController | showAddFormCotizacion              |
+| `agregar-cotizacion`           | POST       | GuardMiddleware                     | CotizacionController | insertCotizacion                   |
+| `editar-cotizacion/{id}`       | GET        | GuardMiddleware                     | CotizacionController | showEditFormCotizacion             |
+| `editar-cotizacion/{id}`       | POST       | GuardMiddleware                     | CotizacionController | editCotizacion                     |
+| `eliminar-cotizacion/{id}`     | GET        | GuardMiddleware                     | CotizacionController | deleteCotizacion                   |
+| *(cualquier ruta no definida)* | -          | -                                   | -                    | 404 Page Not Found                 |
+
+
+
 
 
 
