@@ -1,0 +1,78 @@
+<form action="<?= BASE_URL ?>editar-gestion/<?= $gestion->id ?>" method="POST" class="filter-form">
+ 
+    <h2 class="filter-header">Editar Gestión</h2>
+
+    <div class="filter-grid">
+
+        <!-- Fecha -->
+        <div class="filter-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" 
+                   value="<?= $gestion->fecha ?>">
+        </div>
+
+        <!-- Cuenta -->
+        <div class="filter-group">
+            <label for="id_cuenta">Cuenta:</label>
+            <select id="id_cuenta" name="id_cuenta" required>
+                <option value="" disabled>Seleccione una cuenta</option>
+                <?php foreach ($cuentas as $cuenta): ?>
+                    <option value="<?= $cuenta->id ?>"
+                        <?= $cuenta->id == $gestion->id_cuenta ? 'selected' : '' ?>>
+                        <?= $cuenta->cuenta ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <!-- Descripción -->
+        <div class="filter-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" 
+                   value="<?= $gestion->descripcion ?>">
+        </div>
+
+        <!-- Ingresos / Egresos / Saldos -->
+        <div class="filter-group">
+            <label for="ingreso_efectivo">Ingreso Efectivo:</label>
+            <input type="number" id="ingreso_efectivo" name="ingreso_efectivo"
+                   value="<?= $gestion->ingreso_efectivo ?>" step="0.01" min="0">
+        </div>
+
+        <div class="filter-group">
+            <label for="egreso_efectivo">Egreso Efectivo:</label>
+            <input type="number" id="egreso_efectivo" name="egreso_efectivo" required
+                   value="<?= $gestion->egreso_efectivo ?>" step="0.01" min="0">
+        </div>
+
+        <div class="filter-group">
+            <label for="ingreso_banco">Ingreso Banco:</label>
+            <input type="number" id="ingreso_banco" name="ingreso_banco"
+                   value="<?= $gestion->ingreso_banco ?>" step="0.01" min="0">
+        </div>
+
+        <div class="filter-group">
+            <label for="egreso_banco">Egreso Banco:</label>
+            <input type="number" id="egreso_banco" name="egreso_banco"
+                   value="<?= $gestion->egreso_banco ?>" step="0.01" min="0">
+        </div>
+
+        <div class="filter-group">
+            <label for="ingreso_usd">Ingreso USD:</label>
+            <input type="number" id="ingreso_usd" name="ingreso_usd"
+                   value="<?= $gestion->ingreso_usd ?>" step="0.01" min="0">
+        </div>
+
+        <div class="filter-group">
+            <label for="egreso_usd">Egreso USD:</label>
+            <input type="number" id="egreso_usd" name="egreso_usd"
+                   value="<?= $gestion->egreso_usd ?>" step="0.01" min="0">
+        </div>
+
+    </div>
+
+    <div class="filter-actions">
+        <button type="submit" class="btn-guardar">Actualizar</button>
+        <a href="<?= BASE_URL ?>tabla-gestion" class="btn-cancelar">Cancelar</a>
+    </div>
+</form>

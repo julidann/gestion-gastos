@@ -1,0 +1,71 @@
+<div class="clientes-container">
+
+    <div class="clientes-header">
+        <div>
+            <a href="<?= BASE_URL ?>home" class="btn btn-regresar">Regresar</a>
+        </div>
+        <h1>TABLA GASTOS</h1>
+        <div>
+            <a href="<?= BASE_URL ?>agregar-gestion" class="btn btn-agregar">Agregar Gestión</a>
+        </div>
+    </div>
+
+
+
+
+    <table class="tabla-gestion">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>Fecha</th>
+                <th>Cuenta</th>
+                <th>Descripción</th>
+                <th>Ingreso Efectivo</th>
+                <th>Egreso Efectivo</th>
+                <th>Ingreso Banco</th>
+                <th>Egreso Banco</th>
+                <th>Ingreso USD</th>
+                <th>Egreso USD</th>
+                <th>Saldo Efectivo</th>
+                <th>Saldo Banco</th>
+                <th>Saldo USD</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php if (!empty($gestiones)): ?>
+                <?php foreach ($gestiones as $gestion): ?>
+                    <tr>
+                        <td class="acciones">
+                            <button><a href="<?= BASE_URL ?>editar-gestion/<?= $gestion->id ?>" class="btn-editar">Editar</a>
+                            </button>
+
+                            <form action="<?= BASE_URL ?>eliminar-gestion/<?= $gestion->id ?>"
+                                method="POST"
+                                class="form-eliminar"
+                                onsubmit="return confirm('¿Confirma eliminar al gestion <?= $gestion->nombre ?>?');">
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
+                        </td>
+                        <td class="info"><?= date('d/m/Y', strtotime($gestion->fecha)) ?></td>
+                        <td class="info"><?= $gestion->nombre_cuenta ?></td>
+                        <td class="info"><?= $gestion->descripcion ?></td>
+                        <td class="ingreso">$ <?= $gestion->ingreso_efectivo ?></td>
+                        <td class="egreso">$ <?= $gestion->egreso_efectivo ?></td>
+                        <td class="ingreso">$ <?= $gestion->ingreso_banco ?></td>
+                        <td class="egreso">$ <?= $gestion->egreso_banco ?></td>
+                        <td class="ingreso">$ <?= $gestion->ingreso_usd ?></td>
+                        <td class="egreso">$ <?= $gestion->egreso_usd ?></td>
+                        <td>$ <?= $gestion->saldo_efectivo ?></td>
+                        <td>$ <?= $gestion->saldo_banco ?></td>
+                        <td>$ <?= $gestion->saldo_usd ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="24" class="sin-clientes">No hay nada agregado.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>

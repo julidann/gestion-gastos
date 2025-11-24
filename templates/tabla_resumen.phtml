@@ -1,0 +1,44 @@
+<div class="clientes-container">
+    <div class="clientes-header">
+        <h1>RESUMEN</h1>
+    </div>
+
+    <table class="tabla-gestion" class ="tabla-resumen">
+        <thead>
+            <tr>
+                <th>Saldo Efectivo</th>
+                <th>Saldo Banco</th>
+                <th>Saldo USD</th>
+                <th>Saldo USD en PESOS</th>
+                <th>Total en pesos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php if (!empty($gestiones)): ?>
+                <?php 
+                    $gestion = end($gestiones); // último registro
+                    $totalPesos = 0;
+
+                    if (!empty($cotizaciones)) {
+                        $cotizacion = reset($cotizaciones);
+                        $totalPesos = $gestion->saldo_usd * $cotizacion->cotizacion_usd+ $gestion->saldo_efectivo + $gestion->saldo_banco;
+                        $usdToPesos = $gestion->saldo_usd * $cotizacion->cotizacion_usd;
+                        $totalPesos = $usdToPesos+ $gestion->saldo_efectivo + $gestion->saldo_banco;
+                    }
+                ?>
+                <tr>                      
+                    <td><?= "$" . number_format($gestion->saldo_efectivo, 2) ?></td>
+                    <td><?= "$" . number_format($gestion->saldo_banco, 2) ?></td>
+                    <td><?= "$" . number_format($gestion->saldo_usd, 2) ?></td>
+                    <td><?= "$" . number_format($usdToPesos, 2) ?></td>
+                    <td><?= "$" . number_format($totalPesos, 2) ?></td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4" class="sin-clientes">No hay nada agregado.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>

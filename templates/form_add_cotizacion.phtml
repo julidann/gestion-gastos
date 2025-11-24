@@ -1,0 +1,69 @@
+<div class="gestion-form">
+    <h2 class="filter-header">Agregar Nueva Cotización</h2>
+    
+    <form action="agregar-cotizacion" method="POST"> 
+        
+        <div class="form-grid">
+            
+            <div class="form-group">
+                <label for="anio">Año</label>
+                <select name="anio" id="anio" required>
+                    <!-- Generación dinámica de años (ejemplo PHP) -->
+                    <?php 
+                        $current_year = date("Y");
+                        for ($i = $current_year; $i >= $current_year - 5; $i--): ?>
+                            <option value="<?= $i ?>" <?= ($i == $current_year) ? 'selected' : '' ?>>
+                                <?= $i ?>
+                            </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+        
+            <div class="form-group">
+                <label for="mes">Mes</label>
+                <select name="id_mes" id="mes" required>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11" selected>Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="cantidad_usd">Cantidad USD</label>
+            
+                <input type="number" name="cantidad_usd" id="cantidad_usd" placeholder="E.g., 1422" required>
+            </div>
+
+            <!-- Campo: Cotización USD (Coincide con 'cotizacion_usd' int(11)) -->
+            <div class="form-group">
+                <label for="cotizacion_usd">Cotización USD (Valor en pesos)</label>
+                 <!-- Usamos 'number' sin 'step' para reflejar el tipo INT de tu tabla. -->
+                <input type="number" name="cotizacion_usd" id="cotizacion_usd" placeholder="E.g., 1500" required>
+            </div>
+
+            <!-- Campo: Descripción (Coincide con 'descripcion' varchar(250)) -->
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="descripcion">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" placeholder="Detalle la operación o el concepto (E.g., Pago proveedor X)" maxlength="250">
+            </div>
+
+        </div>
+
+        <div class="filter-actions">
+        <button type="submit" class="btn-guardar">Guardar</button>
+        <a href="<?= BASE_URL ?>tabla-cotizaciones" class="btn-cancelar">Cancelar</a>
+    </div>
+
+    </form>
+</div>

@@ -1,0 +1,64 @@
+<div class="clientes-container">
+    <div class="clientes-header">
+         <div>
+            <a href="<?= BASE_URL ?>home" class="btn btn-regresar">Regresar</a>
+        </div>
+        <h1>TABLA COTIZACIONES</h1>
+         <div >
+    <a href="<?= BASE_URL ?>agregar-cotizacion" class="btn btn-agregar">Agregar Cotización</a>
+</div>
+    </div>
+
+    
+
+    <table class="tabla-gestion">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>Año</th>
+                <th>Mes</th>
+                <th>Cantidad USD</th>
+                <th>Cotización USD</th>
+                <th>Total pesos</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($cotizaciones)): ?>
+                <?php foreach ($cotizaciones as $cotizacion): 
+                    $cotizacion->pesos=$cotizacion->cotizacion_usd * $cotizacion->cantidad_usd;
+                    ?>
+                    <tr>
+                        <td class="acciones">
+                            <button><a href="<?= BASE_URL ?>editar-cotizacion/<?= $cotizacion->id ?>" class="btn-editar">Editar</a>
+                            </button>
+                    
+                            <form action="<?= BASE_URL ?>eliminar-cotizacion/<?= $cotizacion->id ?>" 
+                                  method="POST" 
+                                  class="form-eliminar"
+                                  onsubmit="return confirm('¿Confirma eliminar al gestion <?= $cotizacion->nombre ?>?');">
+                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                            </form>
+                        </td>
+                        <td class = "info"><?= $cotizacion->anio ?></td>
+                        <td class = "info"><?= $cotizacion->mes ?></td>
+                        <td class = "info">USD <?= $cotizacion->cantidad_usd ?></td>
+                        <td>$ <?= $cotizacion->cotizacion_usd ?></td>
+                        <td>$ <?= $cotizacion->pesos ?></td>
+                        <td><?= $cotizacion->descripcion?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="24" class="sin-clientes">No hay nada agregado.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+<div>
+
+
+
+</div>

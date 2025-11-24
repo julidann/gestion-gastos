@@ -1,0 +1,31 @@
+<form action="<?= BASE_URL ?>filtrar-gestion" method="GET" class="filter-form">
+    <h2>Buscar</h2>
+
+    <div class="filter-grid">
+        <div class="filter-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" name="fecha" id="fecha" 
+                   value="<?= $filtro_fecha?>" >
+        </div>
+            
+        <div class="filter-group">
+            <label for="id_cuenta">Cuenta</label>
+            <select name="id_cuenta" id="id_cuenta">
+                <option value="">Todas las cuentas</option>
+                <?php foreach ($cuentas as $cuenta): ?>
+                    <option value="<?= $cuenta->id ?>" 
+                        <?= ($filtro_cuenta_id == $cuenta->id) ? 'selected' : '' ?>>
+                        <?= $cuenta->cuenta?> 
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>  
+
+    <div class="filter-actions">
+        <button type="submit" class="btn btn-filter">Aplicar Filtros</button>
+        <a href="<?= BASE_URL ?>buscar-gestiones" class="btn btn-clear">Limpiar</a>
+    </div>
+    </div>
+</form>
+    
+

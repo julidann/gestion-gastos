@@ -1,0 +1,32 @@
+
+
+<div class="chart-container">
+    <h2>Cotización USD (pesos)</h2>
+    <canvas id="graficoCotizacion" height="150"></canvas>
+</div>
+
+<div class="chart-container">
+    <h2>Cantidad USD</h2>
+    <canvas id="graficoUSD" height="150"></canvas>
+</div>
+
+<script>
+    // Pasamos datos PHP a JS
+    window.labelsCotizacion = [
+        <?php foreach ($cotizaciones as $c): ?>
+            "<?= $c->mes . ' ' . $c->anio ?>",
+        <?php endforeach; ?>
+    ];
+
+    window.valoresCotizacion = [
+        <?php foreach ($cotizaciones as $c): ?>
+            <?= $c->cotizacion_usd ?>,
+        <?php endforeach; ?>
+    ];
+
+    window.valoresUSD = [
+        <?php foreach ($cotizaciones as $c): ?>
+            <?= $c->cantidad_usd ?>,
+        <?php endforeach; ?>
+    ];
+</script>

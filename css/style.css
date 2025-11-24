@@ -1,0 +1,521 @@
+/* ----------------------------- */
+/* -------- RESET -------------- */
+/* ----------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Usamos una fuente limpia y común */
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    /* Fondo muy claro, no blanco puro para evitar fatiga */
+    background: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+main{
+    text-align: center;
+}
+
+/* ----------------------------- */
+/* -------- HEADER ------------- */
+/* ----------------------------- */
+header {
+    /* Blanco puro para un contraste fuerte */
+    background: #ffffff;
+    height: 150px;
+    padding: 18px 35px;
+    /* Sombra suave para darle profundidad */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    font-size: 55px;
+    color: #0059ff; /* Azul de acento */
+    font-weight: 700;
+}
+
+.nav-bar .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #555;
+    padding: 8px 15px;
+    border-radius: 8px; /* Bordes más suaves */
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.nav-bar a:hover {
+    background: #e9ecef; /* Un gris muy suave */
+    color: #0059ff; /* Mantiene el color de acento */
+}
+
+/* ----------------------------- */
+/* -------- HOME --------------- */
+/* ----------------------------- */
+main {
+    padding: 30px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    text-align: center; 
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    border-color: #03112b; /* Resalta el borde */
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    color: #010d23;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #6c757d;
+}
+
+/* ----------------------------- */
+/* -------- TABLAS ------------- */
+/* ----------------------------- */
+
+table {
+    text-align: center;
+   
+}
+
+.clientes-container,
+.table-container {
+    margin: 40px auto;
+    width: 95%;
+    max-width: fit-content;
+  
+}
+
+.clientes-header h1,
+.table-header h1 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.tabla-gestion,
+.table {
+    width: 100%;
+    border-collapse: separate; /* Permite border-spacing para esquinas redondeadas */
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezados */
+.tabla-gestion thead tr,
+.table thead tr {
+    background: #e9ecef; /* Gris claro para el encabezado */
+    color: #495057;
+    font-weight: 600;
+}
+
+.tabla-gestion th,
+.table th {
+    padding: 15px 12px;
+    border-bottom: 2px solid #dee2e6; /* Línea separadora clara */
+    text-align: left;
+}
+
+/* Celdas */
+.tabla-gestion td,
+.table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid #f0f0f0; /* Líneas muy sutiles */
+    color: #333;
+}
+
+/* Filas alternadas */
+.tabla-gestion tbody tr:nth-child(even),
+.table tbody tr:nth-child(even) {
+    background: #ffffff; /* Blanco */
+}
+.tabla-gestion tbody tr:nth-child(odd),
+.table tbody tr:nth-child(odd) {
+    background: #fcfcfc; /* Blanco muy sutilmente más oscuro */
+}
+
+/* Fila hover */
+.tabla-gestion tbody tr:hover,
+.table tbody tr:hover {
+    background: #e6f2ff; /* Azul muy suave en hover */
+}
+
+/* Texto cuando no hay registros */
+.sin-clientes {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+/*Columnas*/
+.tabla-gestion td.info {
+    text-decoration: solid;
+    font-weight: 600;
+    text-align: left;
+}
+.tabla-gestion td.ingreso {
+    color: #28a745; /* Verde para ingresos */
+    font-weight: 600;
+}
+.tabla-gestion td.egreso {
+    color: #dc3545; /* Rojo para egresos */
+    font-weight: 600;
+}
+
+
+
+/* ----------------------------- */
+/* ---- ACCIONES TABLA --------- */
+/* ----------------------------- */
+
+.acciones {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.btn-editar,
+.btn-eliminar,
+.btn-edit,
+.btn-delete {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-editar,
+.btn-edit {
+    border-color: none;
+    background: #007bff; /* Azul primario */
+    color: #fff;
+}
+
+.btn-eliminar,
+.btn-delete {
+    background: #dc3545; /* Rojo de peligro */
+    color: #fff;
+}
+
+.btn-editar:hover,
+.btn-edit:hover {
+    background: #0056b3;
+}
+
+
+
+.btn-eliminar:hover,
+.btn-delete:hover {
+    background: #c82333;
+}
+
+.form-eliminar {
+    display: inline-block;
+}
+
+/* ----------------------------- */
+/* -------- LOGIN -------------- */
+/* ----------------------------- */
+.login-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.login-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 380px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Hereda el estilo de input/select general */
+
+/* ----------------------------- */
+/* -------- BOTONES ------------ */
+/* ----------------------------- */
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-agregar {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.btn-agregar:hover {
+    background-color: #218838;
+}
+
+.btn-regresar {
+    background-color: #6c757d;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.btn-regresar:hover {
+    background-color: #5a6268;
+}
+
+
+.btn,
+.btn-primary,
+.btn-filter,
+.btn-clear,
+.btn-guardar,
+.btn-cancelar,
+.btn-save,
+.btn-cancel {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 120px; /* Asegura que todos los botones tengan un ancho decente */
+    text-align: center;
+}
+
+/* Botones principales (Azul) */
+.btn-primary,
+.btn-guardar,
+.btn-save,
+.btn-filter {
+    background: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+.btn-primary:hover,
+.btn-guardar:hover,
+.btn-save:hover,
+.btn-filter:hover {
+    background: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 86, 179, 0.3);
+}
+
+/* Cancelar/Secundario (Gris) */
+.btn-cancelar,
+.btn-cancel {
+    background: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+}
+
+.btn-cancelar:hover,
+.btn-cancel:hover {
+    background: #ced4da;
+    color: #333;
+}
+
+/* Limpiar (Otro estilo secundario) */
+.btn-clear {
+    background: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    box-shadow: none;
+}
+
+.btn-clear:hover {
+    background: #f0f8ff;
+    color: #0056b3;
+}
+
+/* ----------------------------- */
+/* --- FILTROS / FORMULARIOS --- */
+/* ----------------------------- */
+.filter-form,
+.gestion-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.filter-header {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.filter-grid,
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.filter-actions,
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    /* Los botones alineados a la derecha se ven modernos en formularios */
+    justify-content: flex-end; 
+}
+
+/* Inputs generales */
+.form-group input,
+.form-group select,
+input,
+select {
+    width: 100%; /* Asegura que el input o select ocupe todo el ancho disponible */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ced4da; /* Borde gris claro */
+    background: #ffffff;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff; /* Borde azul al enfocar */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra sutil de enfoque */
+}
+
+/* ----------------------------- */
+/* -------- ALERTS ------------- */
+/* ----------------------------- */
+.alert {
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 95%;
+    max-width: 900px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* ----------GRÁFICOS------------------- */
+
+.chart-container {
+    width: 90%;
+    margin: 100px;
+    padding: 40px;
+    background-color: #f9f9f9;  
+    border-radius: 10px;        
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+
+
+/* ----------------------------- */
+/* -------- FOOTER ------------- */
+footer {
+    background: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 14px;
+}
+footer a {
+    color: #0059ff;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}

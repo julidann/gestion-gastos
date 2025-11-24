@@ -1,0 +1,67 @@
+<div class="gestion-form">
+    <h2 class="filter-header">Editar Cotización</h2>
+    
+    <form action="editar-cotizacion?id=<?= $cotizacion->id ?>" method="POST"> 
+        <div class="form-grid">
+            
+            <!-- Año -->
+            <div class="form-group">
+                <label for="anio">Año</label>
+                <select name="anio" id="anio" required>
+                    <?php 
+                        $current_year = date("Y");
+                        for ($i = $current_year; $i >= $current_year - 5; $i--): ?>
+                            <option value="<?= $i ?>" <?= ($i == $cotizacion->anio) ? 'selected' : '' ?>>
+                                <?= $i ?>
+                            </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+            <!-- Mes -->
+            <div class="form-group">
+                <label for="mes">Mes</label>
+                <select name="id_mes" id="mes" required>
+                    <?php 
+                        $meses = [
+                            1=>'Enero',2=>'Febrero',3=>'Marzo',4=>'Abril',5=>'Mayo',6=>'Junio',
+                            7=>'Julio',8=>'Agosto',9=>'Septiembre',10=>'Octubre',11=>'Noviembre',12=>'Diciembre'
+                        ];
+                        foreach($meses as $num => $nombre): ?>
+                            <option value="<?= $num ?>" <?= ($num == $cotizacion->id_mes) ? 'selected' : '' ?>>
+                                <?= $nombre ?>
+                            </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <!-- Cantidad USD -->
+            <div class="form-group">
+                <label for="cantidad_usd">Cantidad USD</label>
+                <input type="number" name="cantidad_usd" id="cantidad_usd" placeholder="E.g., 1422" 
+                       value="<?= $cotizacion->cantidad_usd ?>" required>
+            </div>
+
+            <!-- Cotización USD -->
+            <div class="form-group">
+                <label for="cotizacion_usd">Cotización USD (Valor en pesos)</label>
+                <input type="number" name="cotizacion_usd" id="cotizacion_usd" placeholder="E.g., 1500" 
+                       value="<?= $cotizacion->cotizacion_usd ?>" required>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <label for="descripcion">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" placeholder="Detalle la operación o el concepto" 
+                       value="<?= $cotizacion->descripcion ?>" maxlength="250">
+            </div>
+
+        </div>
+
+       <div class="filter-actions">
+        <button type="submit" class="btn-guardar">Actualizar</button>
+        <a href="<?= BASE_URL ?>tabla-cotizaciones" class="btn-cancelar">Cancelar</a>
+    </div>
+
+    </form>
+</div>
